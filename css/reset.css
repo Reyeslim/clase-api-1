@@ -1,0 +1,28 @@
+/* ========================================
+   RESETEO CSS
+   ======================================== */
+
+/* Reseteo básico de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Eliminar estilos por defecto de listas */
+ul {
+    list-style: none;
+}
+
+/* Eliminar subrayado de enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Hacer imágenes responsive por defecto */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

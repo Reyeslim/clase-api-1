@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocalización + API Tiempo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🌍 Geolocalización + Tiempo</h1>
+            <p>3 APIs: Navigator Geolocation + Nominatim (OpenStreetMap) + Open-Meteo</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Sección de Ubicación -->
+        <section class="location-section">
+            <h2>📍 Tu Ubicación</h2>
+            <button id="btnObtenerUbicacion" class="btn btn-primary">
+                Obtener Mi Ubicación
+            </button>
+            
+            <div id="loadingLocation" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Obteniendo ubicación...</p>
+            </div>
+            
+            <div id="errorLocation" class="error hidden"></div>
+            
+            <div id="infoUbicacion" class="location-card hidden">
+                <h3>Tu Ubicación</h3>
+                <div class="location-name">
+                    <div class="city-info">
+                        <span id="ciudad" class="city-name">--</span>
+                        <span id="pais" class="country-name">--</span>
+                    </div>
+                    <div id="barrio" class="neighborhood">--</div>
+                </div>
+                <div class="coords-grid">
+                    <div class="coord-item">
+                        <span class="label">Latitud:</span>
+                        <span id="latitud" class="value">-</span>
+                    </div>
+                    <div class="coord-item">
+                        <span class="label">Longitud:</span>
+                        <span id="longitud" class="value">-</span>
+                    </div>
+                    <div class="coord-item">
+                        <span class="label">Precisión:</span>
+                        <span id="precision" class="value">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Tiempo -->
+        <section class="weather-section">
+            <h2>🌤️ Tiempo en Tu Ubicación</h2>
+            
+            <div id="loadingWeather" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Consultando el tiempo...</p>
+            </div>
+            
+            <div id="errorWeather" class="error hidden"></div>
+            
+            <div id="weatherContainer" class="weather-container hidden">
+                <!-- Tiempo actual -->
+                <div class="current-weather">
+                    <div class="weather-icon" id="weatherIcon">☀️</div>
+                    <div class="temperature" id="temperature">--°C</div>
+                    <div class="weather-description" id="weatherDescription">--</div>
+                </div>
+
+                <!-- Detalles -->
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="icon">💨</span>
+                        <div>
+                            <div class="detail-label">Viento</div>
+                            <div class="detail-value" id="windSpeed">-- km/h</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="icon">💧</span>
+                        <div>
+                            <div class="detail-label">Humedad</div>
+                            <div class="detail-value" id="humidity">--%</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="icon">☁️</span>
+                        <div>
+                            <div class="detail-label">Nubosidad</div>
+                            <div class="detail-value" id="cloudCover">--%</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="icon">🌡️</span>
+                        <div>
+                            <div class="detail-label">Sensación</div>
+                            <div class="detail-value" id="apparentTemp">--°C</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pronóstico 5 días -->
+                <div class="forecast-section">
+                    <h3>Pronóstico 5 días</h3>
+                    <div id="forecastContainer" class="forecast-grid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Informativa -->
+        <section class="info-section">
+            <h3>💡 Conceptos utilizados</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>navigator.geolocation</h4>
+                    <p>API del navegador para obtener ubicación GPS del usuario</p>
+                    <code>navigator.geolocation.getCurrentPosition()</code>
+                </div>
+                <div class="info-card">
+                    <h4>Callbacks</h4>
+                    <p>Manejo de operaciones asíncronas con callbacks anidados</p>
+                    <code>fetch(url).then().catch()</code>
+                </div>
+                <div class="info-card">
+                    <h4>Try/Catch</h4>
+                    <p>Captura de errores de geolocalización y fetch</p>
+                    <code>catch (error) { ... }</code>
+                </div>
+                <div class="info-card">
+                    <h4>Nominatim API</h4>
+                    <p>Reverse geocoding: convierte coordenadas en nombres de ubicación</p>
+                    <code>nominatim.openstreetmap.org</code>
+                </div>
+                <div class="info-card">
+                    <h4>Open-Meteo API</h4>
+                    <p>API meteorológica gratuita sin necesidad de API key</p>
+                    <code>open-meteo.com</code>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>APIs: <a href="https://www.w3.org/TR/geolocation/" target="_blank">Navigator Geolocation</a> + <a href="https://nominatim.openstreetmap.org/" target="_blank">Nominatim</a> + <a href="https://open-meteo.com" target="_blank">Open-Meteo</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
